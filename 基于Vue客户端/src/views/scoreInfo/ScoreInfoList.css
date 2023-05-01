@@ -1,0 +1,73 @@
+.scoreInfoList {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    margin-top: 0px;
+}
+
+.scoreInfoItem {
+    margin: 5px;
+    width: 98%;
+    height: auto;
+    border-top: 1px solid #ededed;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.scoreInfoItem .content_view {
+    display: flex;
+    flex-direction: row;
+}
+
+.scoreInfoItem .scoreInfoImg {
+    width: 30%;
+    text-align: right;
+    padding: 2px;
+    border-right: 1px solid #eee;
+}
+
+.scoreInfoItem .scoreInfoImg img {
+    width: 100%;
+    height: auto;
+}
+
+.scoreInfoItem .scoreInfoText {
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+
+.scoreInfoItem .scoreInfoText div {
+    line-height: 25px;
+    height: auto;
+}
+
+.scoreInfoItem .opt_view {
+    display:block;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.scoreInfoQueryForm {
+    width: 100%;
+    height: auto;
+}
+
+.scoreInfoQueryForm h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.scoreInfoQueryForm .queryBtn {
+    text-align: right;
+    margin: 10px;
+}

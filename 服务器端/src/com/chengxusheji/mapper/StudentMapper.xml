@@ -1,0 +1,57 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace有特殊作用  
+mapper代理开发时将namespace指定为mapper接口的全限定名  
+ -->
+<mapper namespace="com.chengxusheji.mapper.StudentMapper"> 
+<!--在mapper.xml文件中配置很多的sql语句，执行每个sql语句时，封装为MappedStatement对象 
+mapper.xml以statement为单位管理sql语句  
+ -->
+	<!-- 添加学生记录 -->
+	<insert id="addStudent" parameterType="student">
+		insert into t_student(user_name,studentNumber,password,studentName,studentSex,studentClassNumber,studentBirthday,studentState,studentPhoto,studentTelephone,studentEmail,studentQQ,studentAddress,studentMemo) values 
+		(#{user_name},#{studentNumber},#{password},#{studentName},#{studentSex},#{studentClassNumber.classNumber},#{studentBirthday},#{studentState},#{studentPhoto},#{studentTelephone},#{studentEmail},#{studentQQ},#{studentAddress},#{studentMemo})
+	</insert>
+
+	<!-- 按照查询条件分页查询学生记录 -->
+	<select id="queryStudent" resultMap="studentMap" >
+		select t_student.* from t_student,t_classInfo ${where} and t_student.studentClassNumber = t_classInfo.classNumber limit #{startIndex},#{pageSize}
+	</select>
+	<resultMap id="studentMap" type="student">
+        <id property="user_name" column="user_name" />
+        <association property="studentClassNumber" column="studentClassNumber" select="com.chengxusheji.mapper.ClassInfoMapper.getClassInfo" />
+    </resultMap>
+
+    <!-- 按照查询条件查询所有学生记录 -->
+	<select id="queryStudentList" resultMap="studentMap" >
+		select t_student.* from t_student,t_classInfo ${where} and t_student.studentClassNumber = t_classInfo.classNumber
+	</select>
+
+    <!-- 按照查询条件的学生记录数 -->
+	<select id="queryStudentCount" resultType="int">
+		select count(*) from t_student,t_classInfo ${where} and t_student.studentClassNumber = t_classInfo.classNumber
+	</select>
+
+	<!-- 根据主键查询某个学生记录 -->
+	<select id="getStudent" parameterType="string" resultMap="studentMap">
+		select * from t_student where t_student.user_name = #{user_name}
+	</select>
+
+	<!-- 根据微信openid查询某个记录 -->
+	<select id="getStudentByOpenid" parameterType="string" resultMap="studentMap">
+		select * from t_student where t_student.openid = #{openid}
+	</select>
+
+	<!-- 更新学生记录 -->
+	<update id="updateStudent" parameterType="student">
+		update t_student set studentNumber=#{studentNumber},password=#{password},studentName=#{studentName},studentSex=#{studentSex},studentClassNumber=#{studentClassNumber.classNumber},studentBirthday=#{studentBirthday},studentState=#{studentState},studentPhoto=#{studentPhoto},studentTelephone=#{studentTelephone},studentEmail=#{studentEmail},studentQQ=#{studentQQ},studentAddress=#{studentAddress},studentMemo=#{studentMemo} where user_name = #{user_name}
+	</update>
+
+	<!-- 关联学生的微信openid-->
+	<update id="updateStudentOpenid" >
+		update t_student set openid=#{openid} where user_name = #{user_name}	</update>
+	<!-- 删除学生记录 -->
+	<delete id="deleteStudent" parameterType="string">
+		delete from t_student where user_name=#{user_name}
+	</delete>
+
+</mapper>

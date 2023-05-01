@@ -1,0 +1,73 @@
+.courseSelectList {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    margin-top: 0px;
+}
+
+.courseSelectItem {
+    margin: 5px;
+    width: 98%;
+    height: auto;
+    border-top: 1px solid #ededed;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.courseSelectItem .content_view {
+    display: flex;
+    flex-direction: row;
+}
+
+.courseSelectItem .courseSelectImg {
+    width: 30%;
+    text-align: right;
+    padding: 2px;
+    border-right: 1px solid #eee;
+}
+
+.courseSelectItem .courseSelectImg img {
+    width: 100%;
+    height: auto;
+}
+
+.courseSelectItem .courseSelectText {
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+
+.courseSelectItem .courseSelectText div {
+    line-height: 25px;
+    height: auto;
+}
+
+.courseSelectItem .opt_view {
+    display:block;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.courseSelectQueryForm {
+    width: 100%;
+    height: auto;
+}
+
+.courseSelectQueryForm h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.courseSelectQueryForm .queryBtn {
+    text-align: right;
+    margin: 10px;
+}
